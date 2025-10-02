@@ -1,22 +1,22 @@
-#terraform {
+terraform {
   #############################################################
   ## AFTER RUNNING TERRAFORM APPLY (WITH LOCAL BACKEND)
   ## YOU WILL UNCOMMENT THIS CODE THEN RERUN TERRAFORM INIT
   ## TO SWITCH FROM LOCAL BACKEND TO REMOTE AWS BACKEND
   #############################################################
-  # backend "s3" {
-    # bucket         = "usman-bucket-009" # REPLACE WITH YOUR BUCKET NAME
-    ## region         = "us-east-1"
-     #use_lockfile = true
-     #encrypt        = true
-  #}
- #required_providers {
-    #aws = {
-      #source = "hashicorp/aws"
-      #version = "6.13.0"
-   ## }
-  #}
-#}
+   backend "s3" {
+     bucket         = "usman-bucket-009" # REPLACE WITH YOUR BUCKET NAME
+     region         = "us-east-1"
+     use_lockfile = true
+     encrypt        = true
+  }
+   required_providers {
+    aws = {
+      source = "hashicorp/aws"
+      version = "6.13.0"
+    }
+  }
+}
 
 
 resource "aws_s3_bucket" "terraform_state" {
